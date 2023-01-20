@@ -1,0 +1,11 @@
+@media screen and (max-width: 767px) {
+    .textbook_title { width: 100% }
+    
+    .textbook_list_content {
+        position: relative;
+        width: 90%;
+        min-width: 18rem;
+        margin: 1rem auto;
+    }
+}
+

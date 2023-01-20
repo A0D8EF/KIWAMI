@@ -1,0 +1,65 @@
+/* tab system */
+.teacher_tab_radio { display: none; }
+
+.teacher_tab_label {
+    display: inline-block;
+    border-top: solid 0.1rem var(--inactive-color);
+    border-left: solid 0.1rem var(--inactive-color);
+    border-right: solid 0.1rem var(--inactive-color);
+    border-radius: 0 0.4rem 0 0;
+    width: 6rem;
+    height: 2rem;
+    background-color: var(--inactive-color);
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.teacher_tab_radio:checked + .teacher_tab_label {
+    background-color: var(--main-color);
+    border-top: solid 0.1rem var(--main-color);
+    border-left: solid 0.1rem var(--main-color);
+    border-right: solid 0.1rem var(--main-color);
+}
+
+@media screen and (min-width: 1000px) {
+    .teacher_tab_area {
+        display: none;
+        border: solid 0.1rem var(--main-color);
+        border-radius: 0 0.4rem 0.4rem 0.4rem;
+        margin-top: 0;
+        padding: 1.5rem 0.5rem;
+    }
+    #teacher_tab_radio_0:checked ~ #teacher_tab_area_0 { display: flex; text-align: center; }
+    #teacher_tab_radio_1:checked ~ #teacher_tab_area_1 { display: flex; text-align: center; }
+    #teacher_tab_radio_2:checked ~ #teacher_tab_area_2 { display: flex; text-align: center; }
+    #teacher_tab_radio_3:checked ~ #teacher_tab_area_3 { display: flex; text-align: center; }
+    #teacher_tab_radio_4:checked ~ #teacher_tab_area_4 { display: flex; text-align: center; }
+    #teacher_tab_radio_5:checked ~ #teacher_tab_area_5 { display: flex; text-align: center; }
+    #teacher_tab_radio_6:checked ~ #teacher_tab_area_6 { display: flex; text-align: center; }
+    #teacher_tab_radio_7:checked ~ #teacher_tab_area_7 { display: flex; text-align: center; }
+    #teacher_tab_radio_8:checked ~ #teacher_tab_area_8 { display: flex; text-align: center; }
+    #teacher_tab_radio_9:checked ~ #teacher_tab_area_9 { display: flex; text-align: center; }
+    #teacher_tab_radio_10:checked ~ #teacher_tab_area_10 { display: flex; text-align: center; }
+    #teacher_tab_radio_11:checked ~ #teacher_tab_area_11 { display: flex; text-align: center; }
+    #teacher_tab_radio_12:checked ~ #teacher_tab_area_12 { display: flex; text-align: center; }
+    #teacher_tab_radio_13:checked ~ #teacher_tab_area_13 { display: flex; text-align: center; }
+    #teacher_tab_radio_14:checked ~ #teacher_tab_area_14 { display: flex; text-align: center; }
+    #teacher_tab_radio_15:checked ~ #teacher_tab_area_15 { display: flex; text-align: center; }
+    #teacher_tab_radio_16:checked ~ #teacher_tab_area_16 { display: flex; text-align: center; }
+    #teacher_tab_radio_17:checked ~ #teacher_tab_area_17 { display: flex; text-align: center; }
+    #teacher_tab_radio_18:checked ~ #teacher_tab_area_18 { display: flex; text-align: center; }
+    #teacher_tab_radio_19:checked ~ #teacher_tab_area_19 { display: flex; text-align: center; }
+    #teacher_tab_radio_20:checked ~ #teacher_tab_area_20 { display: flex; text-align: center; }
+}
+
+#teacher_monthly_list {
+    margin-top: 3rem;
+    text-align: center;
+}
+#teacher_monthly_list > table { margin: 0 auto; }
+#teacher_monthly_list > table > tr > td > span {
+    padding: 0.2rem 0.5rem;
+}

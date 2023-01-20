@@ -1,0 +1,119 @@
+<div style="margin-top: 2rem; min-width: 444px;">
+    <h2 style="margin-left: 0;">教材投稿</h2>
+    <form action="" method="POST" enctype="multipart/form-data" class="textbook_form">
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="error_message">{{ message }}</div>
+        {% endif %}
+        {% endfor %}
+
+        {% csrf_token %}
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">大カテゴリ</label>
+            <select name="major_category" id="major_category" class="select_textbook_major_category mr-2" required>
+                <option disabled selected>大カテゴリ</option>
+                {% for major_category in major_categories %}
+                <option value="{{ major_category.id }}">{{ major_category.name }}</option>
+                {% endfor %}
+            </select>
+            <label class="add_textbook_major_category modal_label" for="modal_chk_major" style="font-size:2rem; color: var(--main-color);">
+                <i class="fas fa-plus-circle"></i>
+            </label>
+        </div>
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">小カテゴリ</label>
+            <select name="minor_category" id="minor_category" class="select_textbook_minor_category mr-2" required>
+                <option disabled selected>大カテゴリを選択してください</option>
+            </select>
+            <label class="add_textbook_minor_category modal_label" for="modal_chk_minor" style="font-size:2rem; color: var(--main-color);">
+                <i class="fas fa-plus-circle"></i>
+            </label>
+        </div>
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">タイトル</label>
+            <input type="text" name="title" style="width: calc(100% - 9rem); height: 2rem;" required>
+        </div>
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">表示順</label>
+            <input type="number" name="order">
+        </div>
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">サムネイル画像</label>
+            <input type="file" name="thumbnail">
+        </div>
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">Youtube動画</label>
+            <input type="checkbox" name="is_youtube" id="is_youtube_chk" class="is_youtube_chk" checked>
+            <label for="is_youtube_chk" class="is_youtube_label"></label>
+        </div>
+        <div class="youtube_url" style="margin-left:0.25rem">
+            <label class="textbook_form_label">Youtube URL</label>
+            <input type="text" name="youtube_url" style="width: calc(100% - 9rem);">
+        </div>
+        <div class="movie_file" style="margin-left:0.25rem">
+            <label class="textbook_form_label">投稿動画</label>
+            <input type="file" name="file_content">
+        </div>
+        <div style="margin-left:0.25rem" class="explanation_area">
+            <label class="textbook_form_label">説明文</label>
+            <textarea name="explanation"  style="width: calc(100% - 9rem); height: 5rem;"></textarea>
+        </div>
+        <div style="margin-left:0.25rem">
+            <label class="textbook_form_label">トップ画面表示</label>
+            <input type="checkbox" name="is_top" id="is_top_chk" class="is_top_chk">
+            <label for="is_top_chk" class="is_top_label"></label>
+        </div>
+        <div class="top_order" style="margin-left:0.25rem">
+            <label class="textbook_form_label">トップ画面での表示順</label>
+            <input type="number" name="top_order">
+        </div>
+        <input type="submit" value="送信" class="original_btn original_btn_send">
+    </form>
+</div>
+
+{# モーダル領域 #}
+<input id="modal_chk_major" class="modal_chk" type="checkbox">
+<div class="modal_body">
+    <label class="modal_bg" for="modal_chk_major"></label>
+    <div class="modal_content">
+        <h2>大カテゴリ新規追加</h2>
+        <form id="textbook_major_category_form" method="POST" action="{% url 'textbook:add_major_category' %}">
+            {% csrf_token %}
+            <input type="text" name="name" class="form-control" placeholder="大カテゴリ名">
+            <div class="form-group mt-2"><label>順番：</label><input type="number" name="order"></div>
+            <input class="original_btn" style="padding: 0.2rem 0.5rem;" type="submit" value="登録">
+            <label for="modal_chk_major" class="original_btn_cancel">キャンセル</label>
+        </form>
+        <h2 style="margin-top: 2rem;">大カテゴリ一覧</h2>
+        <div id="textbook_major_category_list">
+            {% for major_category in major_categories %}
+            <label>{{ major_category.name }}</label>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<input id="modal_chk_minor" class="modal_chk" type="checkbox">
+<div class="modal_body">
+    <label class="modal_bg" for="modal_chk_minor"></label>
+    <div class="modal_content">
+        <h2>小カテゴリ新規追加</h2>
+        <form id="textbook_minor_category_form" method="POST" action="{% url 'textbook:add_minor_category' %}">
+            {% csrf_token %}
+            <div class="mb-2">
+                <select name="parent" class="form-control" style="height: 2.5rem;">
+                    <option disabled selected>大カテゴリを選択してください</option>
+                    {% for major_category in major_categories %}
+                    <option value="{{ major_category.id }}">{{ major_category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-2">
+                <input type="text" name="name" placeholder="小カテゴリ名" class="form-control">
+                <div class="form-group mt-2"><label>順番：</label><input type="number" name="order"></div>
+            </div>
+            <input class="original_btn" style="padding: 0.2rem 0.5rem;" type="submit" value="登録">
+            <label for="modal_chk_minor" class="original_btn_cancel">キャンセル</label>
+        </form>
+    </div>
+</div>

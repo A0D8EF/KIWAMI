@@ -1,0 +1,26 @@
+@media screen and (max-width: 999px) {
+    
+    .calender_area {
+        width: 95%;
+        padding: 1rem;
+        position: relative;
+        margin: 2rem auto;
+    }
+    .graph_area {
+        width: 95%;
+        padding: 1rem;
+        margin: 2rem auto 3rem auto;
+    }
+
+    .teacher_monthly_graph_area, .teacher_yearly_graph_area, .teacher_all_monthly_graph_area, .teacher_all_monthly_table {
+        width: 95%;
+        padding: 0 1rem 2rem 1rem;
+    }
+    .teacher_tab_area {
+        display: none;
+        border: solid 0.1rem var(--main-color);
+        border-radius: 0 0.4rem 0.4rem 0.4rem;
+        margin-top: 0;
+        padding: 1rem 0.5rem;
+    }
+}

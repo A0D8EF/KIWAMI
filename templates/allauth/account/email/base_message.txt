@@ -1,0 +1,12 @@
+{% load i18n %}{% autoescape off %}
+{# {% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %} #}
+こんにちは、KIWAMI事務局です。
+
+{% block content %}{% endblock %}
+
+{% comment %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!
+{# {{ site_domain }}{% endblocktrans %}
+{% endcomment %}
+KIWAMI事務局をご利用いただき、ありがとうございます。
+{% endautoescape %}

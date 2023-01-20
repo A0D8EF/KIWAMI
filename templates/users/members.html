@@ -1,0 +1,33 @@
+{% extends "oneall/base.html" %}
+{% load static %}
+
+
+{% block extra_head %}
+<title>MyPAGE －ONE/ALL</title>
+<link rel="stylesheet" href="{% static 'users/css/members.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/members-sp.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<h1>STAFF</h1>
+<section>
+    <div class="member_list_area">
+        {% for teacher in teachers %}
+        <div class="teacher_introducttion">
+            <div>
+                <div class="member_icon">
+                    {% if teacher.icon %}
+                    <img src="{{ teacher.icon.url }}" alt="{{ teacher.handle_name }}のアイコン"></img>
+                    {% else %}
+                    <img src="{% static 'images/noimage.png' %}">
+                    {% endif %}
+                </div>
+                <div class="member_name" style="margin: 0.5rem 0;">{{ teacher.handle_name }}</div>
+                <div class="member_introduction">{{ teacher.introduction|default:""|linebreaksbr }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
